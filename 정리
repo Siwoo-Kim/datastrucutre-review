@@ -1,0 +1,399 @@
+Data Structure (자료구조)
+    Organizes and stores data.
+        ex) Array, Linked list, Tree.
+    Each has strengths and weaknesses.
+        ex) Arrays are great for random access when you know the index. If you don't know the index, array is not great.
+
+Algorithm.
+    An algorithm describes the steps you have to perform to accomplish a specific task.
+        ex) Making tea.
+    There can be more than one algorithm for accomplishing a task.
+        ex) Sorting -> Many algorithms to accomplishing sort (QuickSort, MergeSort, InsertionSort, BubbleSort).
+    Algorithm is not an implementation.
+        - An algorithm describes the steps you have to perform and implementation is the code you write to perform those steps.
+        - An algorithm can have many implementations.
+    * There can be many algorithms that accomplish the same task. (Many sort algorithms)
+    * There can be many implementations of the same algorithms. (MergeSort algorithms can have many codes to describe the steps of the sort.)
+
+Big-O
+    Big-O notations is a way of expressing the complexity related to the number of items that an algorithm has to deal with.
+    Big-O notations gives us a way of comparing the time complexity of different algorithms in a hardware-independent manner.
+
+    Memory Complexity.
+        The amount of memory it takes to run an algorithm.
+
+    Time Complexity
+        The number of steps involved to run an algorithm.
+            - The number of steps depend on the number of items.
+            - To get sense of how the number of steps grows as the number of items you're dealing with.
+        It is helpful to compare the worst case scenario between two algorithms.
+        * Normally each loop corresponds to N. one loop = Linear (N), two loop = Quadratic (N * N)
+
+        Big-O for Time complexity
+            ex)
+                Number of items = n.
+                Total numbers of steps = 2n + 2.
+                As n grows, the number of steps grows.
+                Remove the constant (2 in "2n" and "+ 2").
+                -> Time complexity is O(n) = Linear time complexity.
+        Big-O values.
+            O(1), Constant time complexity.
+            O(logn) - base 2: 2진로그, Logarithmic time complexity.
+            O(n), Linear time complexity.
+            O(nlogn), n log-star n time complexity.
+            n(n^2) Quadratic time complexity.
+
+
+Array.
+    Contiguous block in memory. (모든 items 은 메모리상 연속적으로 존재.)
+        - 메모리상 연속적으로 존재하므로, arrays have a fixed length. (해당 Array 뒤쪽의 메모리 공간은 이미 할당된 주소일 수 있으므로).
+    Every element occupies the same amount of space in memory.
+        - 이 특성때문에 (size of element * index) + address Equation 이 성립.
+    Memory address of the ith element = (size of element * i) + address.
+        - O(1)
+
+Sort
+
+Stable and Unstable Sort.
+    When you have duplicated values in the items that you're dealing with if the original ordering is preserved then stable, otherwise unstable sort.
+
+Bubble Sort
+    * Stable Sort
+    * In-place algorithm.
+        In-place algorithm: If the extra memory that you need doesn't depend on the number of items you'are dealing with
+    * O(n^2) time complexity: quadratic
+    * Using logical partition (Sorted Partition, Unsorted Partition)
+
+    Bubble Sort partitions the array into a sorted partition and an unsorted partition (logical partitioning).
+    When i traverse (0 to unsorted partition index) the array if the element index i is greater then the element index i + 1, then swap elements.
+
+Selection Sort
+    * Unstable Sort.
+    * In-place algorithm.
+    * O(n^2) time complexity: quadratic.
+    * Doesn't require as much swapping as bubble sort (swap = n)
+
+    Selection Sort partitions the array into a sorted partition and an unsorted partition (logical partitioning).
+    When i traverse an array, look for the largest element in the unsorted partition.
+    After traverse the array, swap the last element in the unsorted partition with the largest element.
+
+Insertion Sort
+    * Stable algorithm.
+    * In-place algorithm.
+    * O(n^2) complexity - quadratic
+    Selection Sort partitions the array into a sorted partition and an unsorted partition (logical partitioning).
+    On each iteration, take the first element in the unsorted partition, insert into the sorted partition.
+    On traverse in the sorted partition, compare the value you're inserting with the values in the sorted partition.
+    On traverse in the sorted partition, look for a value that is a less than or equal to the value you're inserting and if found stop looking.
+    As looking for the correct insertion position, shift i with i + 1.
+
+Shell Sort
+    * Unstable algorithm.
+    * In-place algorithm.
+    * O(n^2) complexity - quadratic.
+
+    - Variation of Insertion Sort.
+    - Starts out using a larger gap value, compares elements that are farther apart from each other in the items.
+    - As the algorithm runs, the gap is reduced.
+    - The last gap value is always 1.
+    - When the gap value is 1, doing an insertion sort.
+    - Goal is to reduce the amount of shifting required. (almost linear time)
+
+Merge Sort
+    * Stable algorithm.
+    * Not In-place algorithm. (Use temporary array)
+    * O(n log n)
+
+    - Divide and conquer algorithm.
+    - Recursive algorithm.
+    - Two phases: splitting and merging.
+    - Splitting phase leads to faster soring during the merge phase (do logically).
+        Splitting Phase
+            - Divide the array into two arrays. (left array and right array)
+            - Keep splitting until all the arrays have only one element each.
+        Merging Phase.
+            - Merge every left/right pair of sibling arrays into a sorted array.
+            - Repeat until having a single sorted array.
+            - create a temporary array large enough to hold all the elements in the arrays.
+            - set i to the first index of the left, set j to the first index of the right array.
+            - If left is smaller, copy it to the temp array and increment i and vice versa.
+            - After temporary array back to the original input array.
+
+*Quick Sort
+    * Unstable algorithm.
+    * In-place algorithm.
+    * O(nlogn) - base 2.
+
+    - Divide and conquer algorithm.
+    - Recursive algorithm.
+    - Uses a pivot element to partition the array into two parts.
+    - * Elements < pivot to its left, elements > pivot to its right.
+    - * Pivot will then be in its correct sorted position but the left and right array are not sorted.
+    - traverse from start = i, from end = j together. when after sorting, increment i or j. check crossing i < j
+    - By alternating between going from right to left and left to right, can be sure that won't lose any value (alternative assignment).
+
+*Counting Sort
+    * Not In-place algorithm;
+    * O(n) (because making the assumptions about the data we're sorting)
+    * Unstable algorithm; to be stable, need to have extra steps.
+    - Makes assumptions about the data.
+    - Doesn't use comparisons.
+    - Only works with non-negative discrete values.
+    - Values must be within a specific range.
+
+*Stable Counting Sort
+    - creating a temporary array that matches the length of the array we're sorting.
+    - Insert of the number of values in the count array, store how many values have a specific value or less. (누적값 summing up value of equal or less)
+    - Use these adjusted counts to write out the values in the correct order and preserve the relative positioning of values.
+    int[] tmp = new int[n];
+    for (int k = n - 1; k >= 0; k-- {   // traverse backward
+        tmp[--count[getDigit(position, input[k], index)]] = input[k];
+    }
+    - traverse the array from right to left, and write duplicate values into the temp array from right to left.
+
+
+*Radix Sort
+    * O(n) (because making the assumptions about the data we're sorting)
+    * In-place algorithm.
+    * Stable algorithm.
+    - Makes assumptions about the data.
+    - Data must have same radix(기수;Alphabet=26,10진법=10) and width.
+    - Data must be integers or strings.
+    - Sort based on each individual digit or letter position (start at the rightmost position:least weight)
+    - Must use a stable sort algorithm at each stage.
+
+*Bucket Sort
+    * Not in-place.
+    * Stability will depend on sort algorithm used to sort the bucket.
+    * To achieve O(n), must have only one item per bucket.
+    * Insertion sort is often used to sort the buckets.
+
+    - O(n)
+    - Use hashing.
+    - Makes assumptions about the data.
+    - Performs best when hashed values of items being sorted are evenly distributed.
+    Operation
+        * The values in bucket X must be greater than the values in bucket X - 1 and and less than the values in bucket X + 1
+            X 버켓의 값들은은 X - 1 버켓의 모든 값보다 커야 되고 X + 1 버켓의 모든 값보단 작아야 한다.
+
+        - Distribute the items into buckets based on their hash. (scattering phase) Count Sort 와 유사한 방법.
+        - Sort the items in each bucket.
+        - Merge the buckets (gathering phase) Count Sort 와 유사한 방법.
+
+
+LinkedList
+    SinglyLinkedList
+        * Linked List differs from arrays in that, as long as you're adding, removing front of the list (Head Node) are constant time complexity.
+        * Only have a reference of the head node.
+        * Storage of the Memory is unlimited.
+        - Sequential list of objects.
+        - Each Item in the list is called a node.
+        - Node in the list is aware of node in the list.
+        - The node is the head of the list.
+        - Have to store extra information for each item. (Reference of the Next Node)
+
+        Insert Operation (head).
+        * O(1) time complexity
+        - create a new node.
+        - Assign current head as the next field to the new node.
+        - Assign head to new node
+
+        Delete Operation (delete)
+        * O(1) time complexity
+        - Assign current head at a temporary variable.
+        - Assign head to next filed of the current head.
+        - return current head.
+
+    DoubleLinkedList
+        * List contains reference of the head and the tail node.
+        * Each node in the list points to the next node and previous node.
+        * Work with the head and the tail is O(1) constant time complexity.
+
+        Insert operation (head)
+        * O(1) time complexity.
+        - Create new node. (*)
+        - Assign current head to new node's next node. (*)
+        - Assign current head's previous node (null) to new node's previous field. (!)
+        - Assign new node to current head's previous field. (!)
+        - Assign head to new node.
+
+        Insert operation(tail)
+        * O(1) time complexity.
+        - Create new node. (*)
+        - Assign current tail's next filed(null) to new node's next field. (*)
+        - Assign current tail to new node's previous field. (!)
+        - Assign current tail's next field to new node. (!)
+        - Assign tail to new node.
+
+        Delete operation(head)
+        * O(1) time complexity.
+        - Assign the current head at a temporary variable. (*)
+        - Assign the current head's previous field to the previous field of head's next node. (!)
+        - Assign head to the current head's next node. (*)
+        - return the temporary variable. (*)
+
+        Delete operation(tail)
+        * O(1) time complexity.
+        - Assign tail at a temporary variable.
+        - Assign tail's next field to the previous node's next field.
+        - Assign tail to tail's previous field.
+        - return the temporary variable.
+
+Stack
+    * Abstract Data Type. (a deck of the cards, a stack of papers)
+    * LIFO - Last In, First Out (Work with head or top)
+    * Example of stack: Call Stack.
+    * O(1) for push(add), pop(remove), and peek(get without removing), when using a linked list.
+    * O(n) for push, because the array may have to be resized.(Worst case)
+    * If you know the maximum number of items that will be on the stack, an array is a good choice.
+    * If memory is tight, array is a good choice.
+    * Generally, LinkedList is ideal.
+
+    push - adds an items as the top item on the stack.
+    pop - removes the top item on the stack.
+    peek - gets the top item on the stack without popping it.
+    Ideal backing data structure: Linked list (Operation with head node)
+    JDK Stack - ArrayDeque, LinkedList
+
+Queue
+    * Abstract Data Type. (Line up)
+    * FIFO - First In, First Out
+    * add(enqueue), remove(dequeue), peek.
+    * If backing up with array, add will be O(n).
+
+HashTable
+    * Abstract Data Type.
+    * Provide access to data using keys.
+    * Consists of key/value pairs.
+    * Optimized for retrieval (when you know the key = array)
+    * Maps keys of any data type to an integer (using hash function).
+    * Hash function maps keys to int (Object.hashCode())
+
+    HashTable 의 Collision
+        - Collision occurs when more than one value has the same hashed value.
+
+    Handling Collision
+        Open Addressing (Linear Probing)
+            - When Collision occurs, increment the hash by one until finding another available position.
+            - Each time you increment the index(hash), doing it in a linear fashion.
+            - Every increment of the index is called a probe.
+        Chaining
+            - Instead of storing the value directly into the array, each array position contains a linked list.
+            - If you add the hash that collides with the another hash for key, there will be a linked list and simply add new value. (Linked list doesn't have maximum size)
+            - Better to have short linked list at every position in baked array. (to do this, have good load factory and hash function)
+
+
+
+    HashTable 의 Load Factory.
+        - Load factor = size (number of items) / capacity
+        - Load factory is used to decide when to resize the array backing the hash table.
+        - Don't want load factor too low (lots of empty space) or too high (increase the likelihood of collision)
+
+
+Tree
+    * Abstract Data Type.
+    * Hierarchical data structure.
+    * Every item in the tree is a node.
+    * Nodes can have children (except leaf) and one parent (except root).
+    * Cannot have cyclic paths. (the path that crosses a node more than once)
+    * Root Node, Leaf Node
+        - The node at the top of the tree is the root.
+        - The root node does not has parent.
+    * Subtree.
+        - Subtree can start with any given node.
+        - It consists with the node and its descendants.
+
+    Tree 의 Path
+        Edge (Path 을 구성하는 가장 작은 Unit)
+            * Every arrows which points to other node is called edge.
+        Path (Edge 의 모임)
+            * A path is the sequence of nodes required to go from one node to another.
+            Root Path
+                * A root path is the path from a node to the root.
+    Tree 의 깊이
+        Depth (node -> root 시 edge 의 갯수)
+            Root Depth = 0.
+            * The depth of node is the number of edges from the node to the root.
+            Level (같은 depth 선상의 있는 Node)
+                * A level of a tree contains all the nodes that are at the same depth.
+        Height (node -> the farthest child 시 edge 의 개수)
+            Root Height = Tree Height.
+            * The height of node is the number of edges on the longest path from the node to a leaf.
+
+    Binary Tree
+        Every node has 0, 1 or 2 children.
+        Children are referred to as left child and right child.
+        In practice, use binary search trees(BST)
+
+        Complete Binary Tree.
+            If every level except the last level, is completely filled (One children is acceptable), all nodes are as far left as possible.
+            * Level 로 구별한다. leaf 가 아님을 주의.
+        Full Binary Tree.
+            Binary Full tree is complete tree as well, but every node other than the leaves has to have two children.
+
+        * Binary Search Tree (BST)
+            Perform insertions, deletions, and retrievals in O(logn) time.
+            Left child always has a smaller value than its parent.
+            Right child always has a larger value than its parent.
+            Because of that, we can do a binary search.
+            To get minimum value in the tree just by following the left edges all the way down to the left.
+            To get maximum value in the tree just by following the right edges all the way down to the right.
+            * Root 의 왼쪽의 node 들은 모두 root 보다 작고(left subtrees), Root 의 오른쪽의 node 들은 모두 root 보다 크다(right substrees).
+
+    Traversal
+        Level Traversal - visit nodes on each level(every nodes at the same depth).
+        Pre-order - visit the root of every subtree first. (root 그 다음 subtree 의 root and so on...)
+        Post-order - visit the root of every subtree last. (가장 밑 단계의 subtree 의 left 자식, right 자식 이후 parent and so on)
+        In-order - visit left child, then root, then right child. (가장 left child 시작:작은값 이후 부모:중간값 이후 그리고 right child:큰값 = 정렬순으로 traversal)
+
+    Delete
+        Three case
+            Node is a leaf.
+                simply delete parent's left child or right child.
+            Node has one child.
+                Replace the node you're deleting with the child. (Node's child also smaller or larger than Grand Parent)
+            Node has two children.
+        Delete node with two children.
+            Need to figure out what the replacement node will be.
+            If taking it from the left subtree, have to take the largest value in the left subtree.
+            If taking it from the right subtree, have to take the smallest value in the right subtree.
+
+Heap (PriorityQueue)
+    * A special type of binary Tree
+    * A complete binary tree.
+        - Every level except the last level, is completely filled, all nodes are as far left as possible.
+    * Must satisfy the heap property.
+        Max Heap
+            - Every parent is greater than or equal to its children.
+        Min Heap
+            - Every parent is less than or equal to its children.
+        - This makes the maximum or minimum value will always be at the root of the tree. (Different with BST)
+    * Children are added at each level from left to right.
+    * Usually implemented as arrays.
+    * Heapify Process.
+        - When new maximum or minimum value is added, the requirement of the heap property no longer meet.
+        - process of converting a binary tree into a heap. (this often has to be done after an insertion or deletion.)
+    * No required ordering between siblings.
+
+    Heap as Arrays.
+        * Heap backed by array.
+        * Root is at array[0]
+        * Traverse each level from left (array[1]) to right (array[2]).
+        Equation for getting children or parent
+            * For the equation works, tree must be complete tree.
+            - Left child = 2i + 1.  i = index of the current node
+            - Right child = 2i + 2. i = index of the current node
+            - parent = floor((i - 1) / 2) i = index of the current node
+
+        Insert Operation.
+            - Always add new items to the end of the array.
+            - Have to fix the heap (heapify)
+                - compare the new item againts its parent
+                - If the item is greater than its parent, swap it with its parent.
+                - rinse and repeat
+
+        Delete Operation.
+            - Must choose a replacement value.
+            - Will take the rightmost value, so that the tree remains complete.
+            Heapify.
+                - When replacement value is greater than parent, fix heap above. Otherwise, fix heap below.
