@@ -14,9 +14,9 @@ public class BubbleSort {
             //After inner loop, last position of the unsorted partition will be sorted partition.
             for (int i = 0; i < unsorted; i++) {
                 if (arrays[i] > arrays[i + 1]) {
-                    int t = arrays[i];
+                    int tmp = arrays[i];
                     arrays[i] = arrays[i + 1];
-                    arrays[i + 1] = t;
+                    arrays[i + 1] = tmp;
                 }
             }
         }
@@ -34,9 +34,9 @@ public class BubbleSort {
             int i = 0;
             while (i < unsorted) {
                 if (arrays[i] > arrays[i + 1]) {
-                    int t = arrays[i];
+                    int tmp = arrays[i];
                     arrays[i] = arrays[i + 1];
-                    arrays[i + 1] = t;
+                    arrays[i + 1] = tmp;
                 }
                 i++;
             }
@@ -48,9 +48,9 @@ public class BubbleSort {
             int i = 0;
             while (i < unsorted) {
                 if (arrays[i] < arrays[i + 1]) {
-                    int t = arrays[i];
+                    int tmp = arrays[i];
                     arrays[i] = arrays[i + 1];
-                    arrays[i + 1] = t;
+                    arrays[i + 1] = tmp;
                 }
                 i++;
             }
@@ -60,9 +60,9 @@ public class BubbleSort {
         for (int unsorted = 0; unsorted < arrays.length; unsorted++) {
             for (int i = arrays.length - 1; i > unsorted; i--) {
                 if (arrays[i] < arrays[i - 1]) {
-                    int t = arrays[i];
+                    int tmp = arrays[i];
                     arrays[i] = arrays[i - 1];
-                    arrays[i - 1] = t;
+                    arrays[i - 1] = tmp;
                 }
             }
         }

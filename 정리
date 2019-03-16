@@ -72,6 +72,7 @@ Selection Sort
     * In-place algorithm.
     * O(n^2) time complexity: quadratic.
     * Doesn't require as much swapping as bubble sort (swap = n)
+    * Using logical partition (Sorted Partition, Unsorted Partition)
 
     Selection Sort partitions the array into a sorted partition and an unsorted partition (logical partitioning).
     When i traverse an array, look for the largest element in the unsorted partition.
