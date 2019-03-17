@@ -52,8 +52,6 @@ Array.
     Memory address of the ith element = (size of element * i) + address.
         - O(1)
 
-Sort
-
 Stable and Unstable Sort.
     When you have duplicated values in the items that you're dealing with if the original ordering is preserved then stable, otherwise unstable sort.
 
@@ -78,10 +76,12 @@ Selection Sort
     When i traverse an array, look for the largest element in the unsorted partition.
     After traverse the array, swap the last element in the unsorted partition with the largest element.
 
-Insertion Sort
+(!) Insertion Sort
     * Stable algorithm.
     * In-place algorithm.
     * O(n^2) complexity - quadratic
+    Using logical partition (Sorted Partition, Unsorted Partition)
+
     Selection Sort partitions the array into a sorted partition and an unsorted partition (logical partitioning).
     On each iteration, take the first element in the unsorted partition, insert into the sorted partition.
     On traverse in the sorted partition, compare the value you're inserting with the values in the sorted partition.
