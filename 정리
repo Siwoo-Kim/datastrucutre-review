@@ -113,8 +113,8 @@ Recursion
 Merge Sort
     * Stable algorithm.
     * Not In-place algorithm. (Use temporary array)
-    * O(n log n)
-    * Using recursive.
+    * O(nlogn) - base 2.
+    * Using recursion.
     * Splitting phase, Merging Phase
 
     - Divide and conquer algorithm.
@@ -133,9 +133,10 @@ Merge Sort
             - After temporary array back to the original input array.
 
 *Quick Sort
-    * Unstable algorithm.
-    * In-place algorithm.
+    * Unstable algorithm. (Merge Sort is stable)
+    * In-place algorithm. (Merge Sort is not in-place algorithm)
     * O(nlogn) - base 2.
+    * Using recursion.
 
     - Divide and conquer algorithm.
     - Recursive algorithm.
