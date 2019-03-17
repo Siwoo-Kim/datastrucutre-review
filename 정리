@@ -100,10 +100,22 @@ Shell Sort
     - When the gap value is 1, doing an insertion sort.
     - Goal is to reduce the amount of shifting required. (almost linear time)
 
+Recursion
+    A method is a recursive method when it calls itself.
+    Factorial
+        0! = 1
+        1! = 1 * 0!
+        2! = 2 * 1!
+        3! = 3 * 2!
+        4! = 4 * 3!
+        => n! = n * (n-1)!
+
 Merge Sort
     * Stable algorithm.
     * Not In-place algorithm. (Use temporary array)
     * O(n log n)
+    * Using recursive.
+    * Splitting phase, Merging Phase
 
     - Divide and conquer algorithm.
     - Recursive algorithm.

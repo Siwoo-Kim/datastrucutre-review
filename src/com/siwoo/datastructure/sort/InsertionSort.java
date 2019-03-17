@@ -52,5 +52,49 @@ public class InsertionSort {
             array[i] = el;
         }
         System.out.println(Arrays.toString(array));
+
+        array = Example.getExample();
+        //using gap do shell sort.
+        //gap value : i = array.length / 2
+        for (int gap = array.length / 2; gap > 0; gap /= 2) {
+            for (int sorted = gap; sorted < array.length; sorted++) {
+                int el = array[sorted];
+                int i = sorted;
+                // (i - gap >= 0) == (i >= gap)
+                while (i >= gap && array[i - gap] > el) {
+                    array[i] = array[i - gap];
+                    i -= gap;
+                }
+                array[i] = el;
+            }
+        }
+        System.out.println(Arrays.toString(array));
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
